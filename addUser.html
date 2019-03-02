@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flower Chop</title>
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<script type="text/javascript" src="script.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBZ5d3PJmy9uQIH8ewqUL3qRX5yBMDvaB0",
+        authDomain: "flowerchop-7c624.firebaseapp.com",
+        databaseURL: "https://flowerchop-7c624.firebaseio.com",
+        projectId: "flowerchop-7c624",
+        storageBucket: "flowerchop-7c624.appspot.com",
+        messagingSenderId: "95714439911"
+    };
+    firebase.initializeApp(config);
+</script>
+
+
+<div class="gradient">
+
+    <div class="container-fluid fill" style="height: 100%; text-align: center">
+        <div class="row fill">
+            <div class="col fill">
+                <br><br><br><br><br><br><br>
+                <input type="image" src="img/newGame.png" onclick="location.href = 'index.html';"/>
+                <br><br><br><br>
+                <input type="image" src="img/scoreboard.png" onclick="location.href = 'scoreBoard.html';"/>
+                <br><br><br><br>
+            </div>
+            <div class="col-8  fill">
+                <img src="img/logo.png" /><br>
+                <div id = "main"><br><br><h1 style="color: crimson; text-shadow: 2px 2px 4px #000000;"> Enter your name <br> to save your score: </h1><br>
+                    <div>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <br>
+                    <button class="btn btn-danger" id="send" type="send" onclick="sendName()">
+                        SEND
+                    </button>
+                </div>
+            </div>
+            <div class="col fill" style="text-align: left">
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+</body>
+</html>
+
+<script>
+
+   function sendName() {
+       console.log(score);
+       let name = $("#name").val();
+       var myDataRef = firebase.database().ref();
+       myDataRef.push({name: name, score: score});
+       document.getElementById("main").innerHTML = "<br><br><h1 style=\"color: crimson; text-shadow: 2px 2px 4px #000000;\">YOUR SCORE WAS SAVED! </h1>";
+
+   }
+</script>
